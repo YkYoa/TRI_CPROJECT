@@ -37,7 +37,13 @@ namespace TRI_PROJECT
         }
         private void button2_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                serialPort1.Close();
+                button1.Enabled = true;
+                button2.Enabled = false;
+            }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
         }
 
         bool FlagStartConfig;
@@ -79,8 +85,8 @@ namespace TRI_PROJECT
             
         }
         string selectedData = "";
-        List<string> str = new List<string>();
-        List<List<string>> s_56 = new List<List<string>>();
+        //List<string> str = new List<string>();
+        //List<List<string>> s_56 = new List<List<string>>();
         private string hex2binary(string hexvalue)
         {
             string binaryval = "";
@@ -97,6 +103,10 @@ namespace TRI_PROJECT
         }
         private void ID_SelectedValuesChanged(object sender, EventArgs e)
         {
+            if (this.ActiveControl != ID)
+                return;
+            List<string> str = new List<string>();
+            List<List<string>> s_56 = new List<List<string>>();
             if (ID.Text != null && int.TryParse(ID.Text.ToString(), out int selectedID))
             {
                 if (selectedID >= 1 && selectedID <= bList.Count)

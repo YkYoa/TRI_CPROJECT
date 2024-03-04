@@ -41,7 +41,6 @@
             this.cboBaud = new System.Windows.Forms.ComboBox();
             this.ID = new System.Windows.Forms.ComboBox();
             this.listBox4 = new System.Windows.Forms.ListBox();
-            this.listBox5 = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label131 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
@@ -339,7 +338,7 @@
             // 
             this.serialBox.Location = new System.Drawing.Point(144, 508);
             this.serialBox.Name = "serialBox";
-            this.serialBox.Size = new System.Drawing.Size(126, 20);
+            this.serialBox.Size = new System.Drawing.Size(273, 20);
             this.serialBox.TabIndex = 0;
             // 
             // button1
@@ -432,14 +431,6 @@
             this.listBox4.Name = "listBox4";
             this.listBox4.Size = new System.Drawing.Size(273, 108);
             this.listBox4.TabIndex = 11;
-            // 
-            // listBox5
-            // 
-            this.listBox5.FormattingEnabled = true;
-            this.listBox5.Location = new System.Drawing.Point(322, 476);
-            this.listBox5.Name = "listBox5";
-            this.listBox5.Size = new System.Drawing.Size(95, 95);
-            this.listBox5.TabIndex = 12;
             // 
             // label4
             // 
@@ -3241,7 +3232,6 @@
             this.Controls.Add(this.label44);
             this.Controls.Add(this.label131);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.listBox5);
             this.Controls.Add(this.listBox4);
             this.Controls.Add(this.ID);
             this.Controls.Add(this.cboBaud);
@@ -3307,7 +3297,6 @@
         private System.Windows.Forms.ComboBox cboBaud;
         private System.Windows.Forms.ComboBox ID;
         private System.Windows.Forms.ListBox listBox4;
-        private System.Windows.Forms.ListBox listBox5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label131;
         private System.Windows.Forms.Label label44;
