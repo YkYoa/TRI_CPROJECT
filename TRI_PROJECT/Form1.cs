@@ -116,7 +116,6 @@ namespace TRI_PROJECT
                 {
 
                     selectedData = bList[selectedID - 1];
-                    listBox3.Items.Add(selectedData);
                     string[] parts = selectedData.Split('/');
                     listBox4.Items.Add($" {parts[0]} Received at {DateTime.Now.ToString("HH:mm:ss")}");
                     if (parts.Length >= 2)

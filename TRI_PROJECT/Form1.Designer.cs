@@ -35,7 +35,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
-            this.listBox3 = new System.Windows.Forms.ListBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.cboPort = new System.Windows.Forms.ComboBox();
             this.cboBaud = new System.Windows.Forms.ComboBox();
@@ -47,7 +46,6 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -376,24 +374,16 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(144, 58);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(273, 108);
+            this.listBox1.Size = new System.Drawing.Size(273, 160);
             this.listBox1.TabIndex = 4;
             // 
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(144, 172);
+            this.listBox2.Location = new System.Drawing.Point(144, 224);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(273, 56);
+            this.listBox2.Size = new System.Drawing.Size(273, 108);
             this.listBox2.TabIndex = 5;
-            // 
-            // listBox3
-            // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(144, 234);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(273, 108);
-            this.listBox3.TabIndex = 6;
             // 
             // serialPort1
             // 
@@ -427,9 +417,9 @@
             // listBox4
             // 
             this.listBox4.FormattingEnabled = true;
-            this.listBox4.Location = new System.Drawing.Point(144, 348);
+            this.listBox4.Location = new System.Drawing.Point(144, 335);
             this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(273, 108);
+            this.listBox4.Size = new System.Drawing.Size(273, 121);
             this.listBox4.TabIndex = 11;
             // 
             // label4
@@ -469,7 +459,7 @@
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Microsoft Uighur", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(12, 106);
+            this.label28.Location = new System.Drawing.Point(16, 128);
             this.label28.Name = "label28";
             this.label28.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label28.Size = new System.Drawing.Size(112, 22);
@@ -497,22 +487,11 @@
             this.label30.TabIndex = 144;
             this.label30.Text = "ONLINE DEVICE";
             // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Microsoft Uighur", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(12, 276);
-            this.label29.Name = "label29";
-            this.label29.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label29.Size = new System.Drawing.Size(75, 23);
-            this.label29.TabIndex = 145;
-            this.label29.Text = "TRUE DATA";
-            // 
             // label31
             // 
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("Microsoft Uighur", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(12, 189);
+            this.label31.Location = new System.Drawing.Point(12, 268);
             this.label31.Name = "label31";
             this.label31.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label31.Size = new System.Drawing.Size(129, 23);
@@ -3225,7 +3204,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label130);
             this.Controls.Add(this.label31);
-            this.Controls.Add(this.label29);
             this.Controls.Add(this.label30);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label28);
@@ -3236,7 +3214,6 @@
             this.Controls.Add(this.ID);
             this.Controls.Add(this.cboBaud);
             this.Controls.Add(this.cboPort);
-            this.Controls.Add(this.listBox3);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button3);
@@ -3291,7 +3268,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.ListBox listBox3;
         private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.ComboBox cboPort;
         private System.Windows.Forms.ComboBox cboBaud;
@@ -3303,7 +3279,6 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label19;
