@@ -323,7 +323,7 @@ namespace TRI_PROJECT
                         {
                             string bin7 = "";
                             bin7 = hex2binary(s_56[7][0]);
-                            string[] myStringArray7 = bin7.Select(x => x.ToString()).ToArray();
+                            string[] myStringArray7 = bin7.PadLeft(12, '0').Select(x => x.ToString()).ToArray();
                             emc_8.Text = myStringArray7[0];
                             s1_8.Text = myStringArray7[1];
                             s2_8.Text = myStringArray7[2];
