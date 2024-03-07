@@ -104,8 +104,22 @@ namespace TRI_PROJECT
         {
             return int.TryParse(input, System.Globalization.NumberStyles.HexNumber, null, out _);
         }
+        private void ClearUIElements()
+        {
+            emc_1.Text = s1_1.Text=s2_1.Text = s3_1.Text = s4_1.Text = s5_1.Text = s6_1.Text = s7_1.Text = s8_1.Text = s9_1.Text = s10_1.Text = s11_1.Text = as1_1.Text = as2_1.Text = as3_1.Text= string.Empty;
+            emc_2.Text = s1_2.Text = s2_2.Text = s3_2.Text = s4_2.Text = s5_2.Text = s6_2.Text = s7_2.Text = s8_2.Text = s9_2.Text = s10_2.Text = s11_2.Text = as1_2.Text = as2_2.Text = as3_2.Text = string.Empty;
+            emc_3.Text = s1_3.Text = s2_3.Text = s3_3.Text = s4_3.Text = s5_3.Text = s6_3.Text = s7_3.Text = s8_3.Text = s9_3.Text = s10_3.Text = s11_3.Text = as1_3.Text = as2_3.Text = as3_3.Text = string.Empty;
+            emc_4.Text = s1_4.Text = s2_4.Text = s3_4.Text = s4_4.Text = s5_4.Text = s6_4.Text = s7_4.Text = s8_4.Text = s9_4.Text = s10_4.Text = s11_4.Text = as1_4.Text = as2_4.Text = as3_4.Text = string.Empty;
+            emc_5.Text = s1_5.Text = s2_5.Text = s3_5.Text = s4_5.Text = s5_5.Text = s6_5.Text = s7_5.Text = s8_5.Text = s9_5.Text = s10_5.Text = s11_5.Text = as1_5.Text = as2_5.Text = as3_5.Text = string.Empty;
+            emc_6.Text = s1_6.Text = s2_6.Text = s3_6.Text = s4_6.Text = s5_6.Text = s6_6.Text = s7_6.Text = s8_6.Text = s9_6.Text = s10_6.Text = s11_6.Text = as1_6.Text = as2_6.Text = as3_6.Text = string.Empty;
+            emc_7.Text = s1_7.Text = s2_7.Text = s3_7.Text = s4_7.Text = s5_7.Text = s6_7.Text = s7_7.Text = s8_7.Text = s9_7.Text = s10_7.Text = s11_7.Text = as1_7.Text = as2_7.Text = as3_7.Text = string.Empty;
+            emc_8.Text = s1_8.Text = s2_8.Text = s3_8.Text = s4_8.Text = s5_8.Text = s6_8.Text = s7_8.Text = s8_8.Text = s9_8.Text = s10_8.Text = s11_8.Text = as1_8.Text = as2_8.Text = as3_8.Text = string.Empty;
+        }
+
+
         private void ID_SelectedValuesChanged(object sender, EventArgs e)
         {
+            ClearUIElements();
             if (this.ActiveControl != ID)
                 return;
             List<string> str = new List<string>();
@@ -117,7 +131,6 @@ namespace TRI_PROJECT
 
                     selectedData = bList[selectedID - 1];
                     string[] parts = selectedData.Split('/');
-                    listBox4.Items.Add($" {parts[0]} Received at {DateTime.Now.ToString("HH:mm:ss")}");
                     if (parts.Length >= 2)
                     {
                         foreach (string item in parts)
@@ -338,7 +351,9 @@ namespace TRI_PROJECT
                             as1_8.Text = s_56[7][1];
                             as2_8.Text = s_56[7][2];
                             as3_8.Text = s_56[7][3];
-                        }   
+                        }
+
+
                     }
 
                 }
@@ -350,48 +365,102 @@ namespace TRI_PROJECT
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string data = serialPort1.ReadLine();
-            listBox1.Items.Add(data);
-            if (FlagStartConfig == true || data.StartsWith("STARTCONFIG"))
+            string cleanedData = data.Trim().Replace(" ", "");
+            this.Invoke(new MethodInvoker(() =>
             {
-                Tuple<string, string, string> parsedData = parsestring(data);
-                if(parsedData != null) 
+                listBox1.Items.Add(data);
+                if (FlagStartConfig == true||cleanedData.StartsWith("STARTCONFIG"))
                 {
-                    string a = parsedData.Item1;
-                    string b = parsedData.Item2;
-                    string c = parsedData.Item3;
-                    if (a == "1" && int.TryParse(b, out int b1) && b1 >= 1 && b1 <= 50 && c == "OK")
+                    Tuple<string, string, string> parsedData = parsestring(data);
+                    if (parsedData != null)
                     {
-                        listBox2.Items.Add($"Device join network:{b1}");
+                        string a = parsedData.Item1;
+                        string b = parsedData.Item2;
+                        string c = parsedData.Item3;
+                        if (a == "1" && int.TryParse(b, out int b1) && b1 >= 1 && b1 <= 50 && c == "OK")
+                        {
+                            Invoke(new MethodInvoker(() => { listBox2.Items.Add($"Device join network:{b1}"); }));
+                        }
                     }
                 }
-            }
-            if(FlagStopConfig == true||data.StartsWith("STOPCONFIG"))  
-            {
-                for (int i = 1; i <= 50; i++)
+                else
                 {
-                    bList.Add("b" + i.ToString());
-
-                }
-                if (data.Length>20&&data.Length<185)
-                {
-                    string[] smallList = data.Split('/');
-                    if (smallList[0] == "2")
+                    Tuple<string, string, string> parsedData = parsestring(data);
+                    if (parsedData != null)
                     {
-                        if (int.TryParse(smallList[1], out int a) && a >= 1 && a <= 50)
+                        string a = parsedData.Item1;
+                        string b = parsedData.Item2;
+                        string c = parsedData.Item3;
+                        if (a == "1" && int.TryParse(b, out int b1) && b1 >= 1 && b1 <= 50 && c == "OK")
                         {
-                            for (int j = 1; j <= 50; j++)
+                            Invoke(new MethodInvoker(() => { listBox2.Items.Add($"Device join network:{b1}"); }));
+                        }
+                    }
+                }
+                if (FlagStopConfig == true||cleanedData.StartsWith("STOPCONFIG" ))
+                {
+                    for (int i = 1; i <= 50; i++)
+                    {
+                        bList.Add("b" + i.ToString());
+
+                    }
+                    if (data.Length > 20 && data.Length < 185)
+                    {
+                        string[] smallList = data.Split('/');
+                        if (smallList[0] == "2")
+                        {
+                            if (int.TryParse(smallList[1], out int a) && a >= 1 && a <= 50)
                             {
-                                if (a == j)
+                                Invoke(new MethodInvoker(() => {
+                                    listBox4.Items.Add($" {smallList[1]} " +
+                                    $"Received at {DateTime.Now.ToString("HH:mm:ss")}");
+                                }));
+                                for (int j = 1; j <= 50; j++)
                                 {
-                                    bList[j - 1] = string.Join("/", smallList.Skip(1).Take(10));
+                                    if (a == j)
+                                    {
+                                        bList[j - 1] = string.Join("/", smallList.Skip(1).Take(10));
+                                    }
                                 }
                             }
                         }
+
                     }
-                   
+
                 }
-                
-            }
+                else
+                {
+                    for (int i = 1; i <= 50; i++)
+                    {
+                        bList.Add("b" + i.ToString());
+
+                    }
+                    if (data.Length > 20 && data.Length < 185)
+                    {
+                        string[] smallList = data.Split('/');
+                        if (smallList[0] == "2")
+                        {
+                            if (int.TryParse(smallList[1], out int a) && a >= 1 && a <= 50)
+                            {
+                                Invoke(new MethodInvoker(() => {
+                                    listBox4.Items.Add($" {smallList[1]} " +
+                                    $"Received at {DateTime.Now.ToString("HH:mm:ss")}");
+                                }));
+                                for (int j = 1; j <= 50; j++)
+                                {
+                                    if (a == j)
+                                    {
+                                        bList[j - 1] = string.Join("/", smallList.Skip(1).Take(10));
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+
+                }
+
+            }));
 
         }
     }
